@@ -59,7 +59,7 @@ The running app has **zero dependencies**: it only serves the committed PNGs. On
    (`python -m pip install Pillow`) or use the bundled runtime that ships with Pillow 12.3:
 
    ```powershell
-   & "C:\Users\r_gja.QW\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\python\python.exe" tools\make_samples.py
+   & "<path-to-python-with-Pillow>\python.exe" tools\make_samples.py
    ```
 
    Do not add Pillow to the server's requirements; it is a build-time tool only.
