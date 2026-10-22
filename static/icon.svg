@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Paper Trail">
+  <rect width="128" height="128" rx="30" fill="#1f5c43"/>
+  <path d="M40 22h32l19 19v65H40z" fill="#f7f3ea"/>
+  <path d="M72 22v19h19z" fill="#cee0d4"/>
+  <path d="M72 22l19 19H72z" fill="#bcd3c2"/>
+  <rect x="51" y="55" width="29" height="4.5" rx="2.25" fill="#1f5c43" opacity="0.78"/>
+  <rect x="51" y="67" width="29" height="4.5" rx="2.25" fill="#1f5c43" opacity="0.56"/>
+  <rect x="51" y="79" width="19" height="4.5" rx="2.25" fill="#1f5c43" opacity="0.38"/>
+  <circle cx="89" cy="95" r="7" fill="#c99a4b"/>
+  <circle cx="75" cy="103" r="3.2" fill="#c99a4b" opacity="0.72"/>
+  <circle cx="64" cy="108" r="1.8" fill="#c99a4b" opacity="0.5"/>
+</svg>

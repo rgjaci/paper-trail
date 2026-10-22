@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "note": "Gold facts for tools/eval.py. Synthetic sample data only. Deadlines are ISO dates stated on the page; amounts are as printed on the page. Keep this list small and stable: it is a demo-time sanity check, not a benchmark.",
+  "docs": {
+    "benefits-denial": {
+      "deadlines": ["2027-01-31"],
+      "amounts": ["$2,140.00", "$1,925.00"]
+    },
+    "snap-recertification": {
+      "deadlines": ["2027-01-15"],
+      "amounts": []
+    },
+    "immigration-rfe": {
+      "deadlines": ["2027-02-26"],
+      "amounts": []
+    }
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "version": 1,
+  "note": "Recorded demo answers for the bundled synthetic sample cases. English only. Used only when PAPERTRAIL runs in demo mode with no API key.",
+  "responses": {
+    "benefits-denial|explain|en": {
+      "warnings": [],
+      "data": {
+        "title": "Notice of Adverse Benefit Determination",
+        "doc_type": "insurance denial",
+        "what_it_is": "This is a denial of an MRI of your lower back. The plan says the request did not show six weeks of conservative treatment first, so it will not pay for the scan. You can appeal the decision.",
+        "key_points": [
+          {
+            "text": "The denial is for an MRI (CPT 72148). If you get the scan, the plan says you owe $1,925.00 of the $2,140.00 allowed amount.",
+            "citation": {
+              "page": 1,
+              "quote": "The plan's allowed amount for CPT 72148 is $2,140.00, and the member cost share is $1,925.00."
+            }
+          },
+          {
+            "text": "You have the right to an internal appeal, and it must be received by January 31, 2027.",
+            "citation": {
+              "page": 1,
+              "quote": "Your internal appeal must be received no later than January 31, 2027."
+            }
+          },
+          {
+            "text": "Include a letter from your doctor and treatment records that show at least six weeks of conservative care.",
+            "citation": {
+              "page": 2,
+              "quote": "Clinical records that show at least six weeks of treatment, such as physical therapy notes, medication records, or office visit notes."
+            }
+          },
+          {
+            "text": "If waiting could seriously harm your health, your doctor can ask for an expedited appeal; the plan says it will respond within 72 hours.",
+            "citation": {
+              "page": 1,
+              "quote": "If your doctor certifies that a delay could seriously jeopardize your health, you may request an expedited appeal by calling the number below."
+            }
+          }
+        ],
+        "next_action": "Ask Dr. Ruiz for a letter and the last six months of treatment records, then mail or fax the appeal package before January 31, 2027.",
+        "unreadable": []
+      }
+    },
+    "benefits-denial|deadline|en": {
+      "warnings": [],
+      "data": {
+        "deadlines": [
+          {
+            "date": "2027-01-31",
+            "what": "Internal appeal must be received by the plan",
+            "consequence": "If you miss it, you lose this internal appeal; ask the plan about external review options.",
+            "action": "Mail or fax the appeal package with your doctor's letter and treatment records.",
+            "citation": {
+              "page": 1,
+              "quote": "Your internal appeal must be received no later than January 31, 2027."
+            }
+          },
+          {
+            "date": null,
+            "what": "Expedited appeal, if your doctor certifies that a delay could seriously jeopardize your health",
+            "consequence": "The plan says it will respond within 72 hours if it accepts the expedited request.",
+            "action": "Call the plan and ask your doctor to document that the wait could harm your health.",
+            "citation": {
+              "page": 1,
+              "quote": "If your doctor certifies that a delay could seriously jeopardize your health, you may request an expedited appeal by calling the number below."
+            }
+          }
+        ],
+        "note": "The notice says the plan decides internal appeals within 30 days; the dates above are filing dates, not decision dates."
+      }
+    },
+    "benefits-denial|ask|en": {
+      "warnings": [],
+      "data": {
+        "answer": "You need to file an internal appeal with the plan before January 31, 2027. Send a signed letter explaining why the MRI is medically necessary, a letter from Dr. Ruiz, and treatment records showing at least six weeks of conservative care. If waiting could seriously harm your health, ask your doctor to request an expedited appeal.",
+        "citations": [
+          {
+            "page": 1,
+            "quote": "Your internal appeal must be received no later than January 31, 2027."
+          },
+          {
+            "page": 2,
+            "quote": "Clinical records that show at least six weeks of treatment, such as physical therapy notes, medication records, or office visit notes."
+          },
+          {
+            "page": 1,
+            "quote": "If your doctor certifies that a delay could seriously jeopardize your health, you may request an expedited appeal by calling the number below."
+          }
+        ],
+        "missing_info": "The notice does not say whether Dr. Ruiz has already sent records to the plan. Confirm that with the doctor's office."
+      }
+    },
+    "benefits-denial|respond|en": {
+      "warnings": [],
+      "data": {
+        "to": "Appeals Department, Hudson Valley Health Plan",
+        "subject": "Internal appeal of adverse benefit determination - MRI CPT 72148 - Member ID HV-4471-2290",
+        "body": "To: Appeals Department, Hudson Valley Health Plan\n\nRe: Internal appeal - Notice of Adverse Benefit Determination dated December 2, 2026\nMember: Marisol Alvarez\nMember ID: HV-4471-2290\nCase: A-771903\n\nDear Appeals Department,\n\nI am writing to appeal your decision to deny coverage for an MRI of the lumbar spine (CPT 72148), ordered by Dr. Elena Ruiz. The notice states that the request did not document six weeks of conservative treatment.\n\nI am enclosing a letter from Dr. Ruiz describing my symptoms and the conservative treatments I have tried, along with clinical records that show at least six weeks of treatment. Please reconsider the denial based on this information.\n\nIf you need anything else to complete the review, please contact me at [Phone] or [Email]. Please send your written decision to the address above.\n\nSincerely,\nMarisol Alvarez\n[Address]\n[Phone]",
+        "checklist": [
+          "A signed letter explaining why the MRI is medically necessary",
+          "A letter from Dr. Ruiz describing symptoms and treatments tried",
+          "Clinical records showing at least six weeks of conservative treatment",
+          "The name and phone number of the ordering provider",
+          "A copy of the denial notice and this appeal letter for your records"
+        ],
+        "send_via": "Mail: Hudson Valley Health Plan, Appeals Department, P.O. Box 9127, Albany, NY 12212. Phone: 1-800-555-0142 (TTY 711).",
+        "caution": "This is not medical or legal advice. Confirm the deadline, address and member ID on your notice before sending, and keep a copy of everything you mail.",
+        "citations": [
+          {
+            "page": 1,
+            "quote": "We have denied the requested service as not medically necessary under plan policy RAD-204 (Advanced Imaging Review)."
+          },
+          {
+            "page": 1,
+            "quote": "Mail your appeal to Hudson Valley Health Plan, Appeals Department, P.O. Box 9127, Albany, NY 12212."
+          },
+          {
+            "page": 2,
+            "quote": "A letter from the ordering provider describing your symptoms and the conservative treatments you have tried."
+          }
+        ]
+      }
+    },
+
+    "snap-recertification|explain|en": {
+      "warnings": [],
+      "data": {
+        "title": "SNAP Recertification Notice",
+        "doc_type": "benefits recertification",
+        "what_it_is": "This notice says your household must recertify for SNAP to keep receiving benefits after your certification period ends on January 31, 2027. You have a phone interview and must send the form and required documents by January 15, 2027.",
+        "key_points": [
+          {
+            "text": "A telephone interview is scheduled for January 8, 2027 at 10:30 a.m.",
+            "citation": {
+              "page": 1,
+              "quote": "A telephone interview is scheduled for January 8, 2027 at 10:30 a.m."
+            }
+          },
+          {
+            "text": "Your completed form and all required documents must be submitted by January 15, 2027.",
+            "citation": {
+              "page": 1,
+              "quote": "Your completed recertification form and all required documents must be submitted by January 15, 2027."
+            }
+          },
+          {
+            "text": "You will need recent pay stubs, proof of rent, a utility bill, and photo ID for the head of household.",
+            "citation": {
+              "page": 1,
+              "quote": "Proof of income for the last 30 days, such as pay stubs for the last four weeks or a letter from your employer."
+            }
+          },
+          {
+            "text": "If you miss the deadline, your benefits will stop on February 1, 2027.",
+            "citation": {
+              "page": 1,
+              "quote": "If you miss this deadline, your benefits will stop on February 1, 2027."
+            }
+          }
+        ],
+        "next_action": "Gather the signed form, four weeks of pay stubs, rent proof, utility bill and photo ID, then submit them by January 15, 2027. Take the January 8 interview call.",
+        "unreadable": []
+      }
+    },
+    "snap-recertification|deadline|en": {
+      "warnings": [],
+      "data": {
+        "deadlines": [
+          {
+            "date": "2027-01-08",
+            "what": "Scheduled telephone recertification interview at 10:30 a.m.",
+            "consequence": "If the office cannot reach you, you must call by January 12, 2027 to reschedule.",
+            "action": "Be available at the phone number on file and have your documents nearby.",
+            "citation": {
+              "page": 1,
+              "quote": "A telephone interview is scheduled for January 8, 2027 at 10:30 a.m."
+            }
+          },
+          {
+            "date": "2027-01-15",
+            "what": "Completed recertification form and required documents due",
+            "consequence": "Your benefits will stop on February 1, 2027 if you miss it.",
+            "action": "Submit online, by phone, by mail, or in person using one of the options in the notice.",
+            "citation": {
+              "page": 1,
+              "quote": "Your completed recertification form and all required documents must be submitted by January 15, 2027."
+            }
+          }
+        ],
+        "note": "The notice also says to call by January 12, 2027 if you cannot be reached for the January 8 interview."
+      }
+    },
+    "snap-recertification|ask|en": {
+      "warnings": [],
+      "data": {
+        "answer": "You must complete a phone interview on January 8, 2027 at 10:30 a.m., and your signed recertification form plus proof of income, rent, utilities and identity must be submitted by January 15, 2027. If you miss the deadline, your benefits will stop on February 1, 2027.",
+        "citations": [
+          {
+            "page": 1,
+            "quote": "A telephone interview is scheduled for January 8, 2027 at 10:30 a.m."
+          },
+          {
+            "page": 1,
+            "quote": "Your completed recertification form and all required documents must be submitted by January 15, 2027."
+          },
+          {
+            "page": 1,
+            "quote": "If you miss this deadline, your benefits will stop on February 1, 2027."
+          }
+        ],
+        "missing_info": "The notice does not print the phone number the office will call. Confirm the number on file in your online account before the interview."
+      }
+    },
+    "snap-recertification|respond|en": {
+      "warnings": [],
+      "data": {
+        "to": "SNAP Recertification Unit",
+        "subject": "SNAP recertification - Case SNAP-4471-882 - documents enclosed",
+        "body": "To: SNAP Recertification Unit\n\nRe: SNAP recertification - Case Number SNAP-4471-882 - Recertification ID R-2290-771\n\nDear Recertification Unit,\n\nI am submitting my recertification form and the required documents for my household. Enclosed are my signed recertification form, proof of income for the last 30 days, proof of rent, a current utility bill, and proof of identity for the head of household.\n\nPlease confirm that my recertification is complete. If any document is missing or unreadable, please contact me at [Phone] so I can provide it before the January 15, 2027 deadline.\n\nSincerely,\nDaniel Okafor\n[Address]\n[Phone]",
+        "checklist": [
+          "Signed and dated recertification form",
+          "Pay stubs for the last four weeks or an employer letter",
+          "Proof of rent (lease, rent receipt, or landlord letter)",
+          "Current utility bill or utility allowance statement",
+          "Photo ID for the head of household",
+          "A copy of the complete submission for your records"
+        ],
+        "send_via": "Online: mybenefits.ny.gov. Phone: 1-888-555-0177. Mail: SNAP Recertification Unit, 224 Church Street, New York, NY 10013.",
+        "caution": "This is not legal advice. Confirm the deadline, case number and mailing address on your notice, and keep a copy of everything you submit.",
+        "citations": [
+          {
+            "page": 1,
+            "quote": "Your completed recertification form and all required documents must be submitted by January 15, 2027."
+          },
+          {
+            "page": 2,
+            "quote": "Online: mybenefits.ny.gov (upload each document as a PDF or photo)"
+          },
+          {
+            "page": 1,
+            "quote": "Proof of rent, such as a lease, rent receipt, or landlord letter."
+          }
+        ]
+      }
+    },
+
+    "immigration-rfe|explain|en": {
+      "warnings": [],
+      "data": {
+        "title": "Request for Evidence",
+        "doc_type": "immigration request",
+        "what_it_is": "This is a Request for Evidence in your family petition. It is not a denial. The agency wants at least three types of proof that you have lived together as a married couple, and your response must be received by February 26, 2027.",
+        "key_points": [
+          {
+            "text": "This notice is a request for more evidence, not a denial of the petition.",
+            "citation": {
+              "page": 1,
+              "quote": "This request for evidence asks for additional documents before we can decide your case. This is not a denial."
+            }
+          },
+          {
+            "text": "You need at least three of the listed evidence types to show you have lived together as a married couple.",
+            "citation": {
+              "page": 1,
+              "quote": "We need at least three of the following:"
+            }
+          },
+          {
+            "text": "Your response must be received by February 26, 2027.",
+            "citation": {
+              "page": 1,
+              "quote": "Your response must be received by February 26, 2027."
+            }
+          },
+          {
+            "text": "If the agency does not receive a response, it may decide using only the evidence already in the file.",
+            "citation": {
+              "page": 1,
+              "quote": "If we do not receive your response by that date, we may decide your case using the evidence we already have."
+            }
+          }
+        ],
+        "next_action": "Gather at least three kinds of joint evidence, fill in the cover sheet, write the receipt number on every page, and send one complete package before February 26, 2027. Keep a copy.",
+        "unreadable": []
+      }
+    },
+    "immigration-rfe|deadline|en": {
+      "warnings": [],
+      "data": {
+        "deadlines": [
+          {
+            "date": "2027-02-26",
+            "what": "Response to the Request for Evidence must be received by the agency",
+            "consequence": "The agency may decide the case using only the evidence it already has.",
+            "action": "Send one complete response package with the cover sheet and the receipt number on every page.",
+            "citation": {
+              "page": 1,
+              "quote": "Your response must be received by February 26, 2027."
+            }
+          }
+        ],
+        "note": "The notice says this is a request for evidence, not a denial. If you need help, it suggests contacting a legal services organization or an accredited representative."
+      }
+    },
+    "immigration-rfe|ask|en": {
+      "warnings": [],
+      "data": {
+        "answer": "The agency needs at least three types of evidence that you have lived together as a married couple, such as a joint lease or deed, joint bank statements, insurance documents, photos with family, or signed affidavits. Send one complete package with the cover sheet, and make sure it is received by February 26, 2027.",
+        "citations": [
+          {
+            "page": 1,
+            "quote": "We need at least three of the following:"
+          },
+          {
+            "page": 1,
+            "quote": "A joint lease, mortgage statement, or property deed."
+          },
+          {
+            "page": 1,
+            "quote": "Your response must be received by February 26, 2027."
+          }
+        ],
+        "missing_info": "The notice does not say how many photos or affidavits are enough. Include a short cover letter listing every document you send."
+      }
+    },
+    "immigration-rfe|respond|en": {
+      "warnings": [],
+      "data": {
+        "to": "Evidence Response Center, Department of Citizenship Services",
+        "subject": "Response to Request for Evidence - Receipt Number DCS-2026-IM-4471",
+        "body": "To: Evidence Response Center\nDepartment of Citizenship Services\nP.O. Box 4471\nAlbany, NY 12212\n\nRe: Response to Request for Evidence\nReceipt Number: DCS-2026-IM-4471\nPetitioners: Ana and Miguel Santos\n\nDear Review Unit,\n\nI am responding to the Request for Evidence dated December 1, 2026 in the family petition for Ana and Miguel Santos. This package includes the signed cover sheet and the documents requested to show that we have lived together as a married couple.\n\nEnclosed are a joint lease, joint bank statements, insurance documents listing both spouses, family photographs, and two signed affidavits.\n\nPlease confirm receipt of this package. If any document is missing, please contact us at [Phone] so we can respond before the deadline.\n\nSincerely,\nAna Santos\nMiguel Santos\n[Address]\n[Phone]",
+        "checklist": [
+          "Signed and dated cover sheet from the notice",
+          "Receipt number DCS-2026-IM-4471 written on every page",
+          "At least three types of evidence from the list on page 1",
+          "Two signed and dated affidavits",
+          "A short cover letter listing every document enclosed",
+          "A copy of the complete package and the mailing receipt"
+        ],
+        "send_via": "Mail: Department of Citizenship Services, Evidence Response Center, P.O. Box 4471, Albany, NY 12212.",
+        "caution": "This is not legal advice. Consider contacting a legal services organization or an accredited representative before responding, and keep a copy of everything you send.",
+        "citations": [
+          {
+            "page": 1,
+            "quote": "Send one complete response package with the cover sheet included in this notice."
+          },
+          {
+            "page": 1,
+            "quote": "A joint lease, mortgage statement, or property deed."
+          },
+          {
+            "page": 1,
+            "quote": "Affidavits from two people who know you and can describe your relationship, signed and dated."
+          }
+        ]
+      }
+    }
+  }
+}

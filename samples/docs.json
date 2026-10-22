@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "note": "Synthetic sample documents for software demonstration only. Not real notices, and not legal, medical, or immigration advice.",
+  "docs": [
+    {
+      "id": "benefits-denial",
+      "title": "Notice of Adverse Benefit Determination",
+      "doc_type": "insurance denial",
+      "agency": "Hudson Valley Health Plan",
+      "doc_date": "2026-12-02",
+      "recipient_lines": [
+        "Marisol Alvarez",
+        "Member ID: HV-4471-2290",
+        "Group: 88214",
+        "Case: A-771903"
+      ],
+      "subject": "MRI of the lumbar spine (CPT 72148) - adverse benefit determination",
+      "pages": [
+        {
+          "n": 1,
+          "text": "Dear Ms. Alvarez,\n\nThis letter is our adverse benefit determination for the request submitted on November 10, 2026 for an MRI of the lumbar spine (CPT 72148) ordered by Dr. Elena Ruiz.\n\nDECISION\nWe have denied the requested service as not medically necessary under plan policy RAD-204 (Advanced Imaging Review). The clinical information we received did not document six weeks of conservative treatment before the imaging request.\n\nWHAT THIS MEANS\nYou are responsible for the full cost of the service if you receive it. The plan's allowed amount for CPT 72148 is $2,140.00, and the member cost share is $1,925.00.\n\nYOUR OPTIONS\nYou may submit an internal appeal within 60 days of the date of this notice. If you disagree with the internal appeal decision, you may request an external review within four months of the final internal decision.\n\nAPPEAL DEADLINE\nYour internal appeal must be received no later than January 31, 2027.\n\nEXPEDITED APPEALS\nIf your doctor certifies that a delay could seriously jeopardize your health, you may request an expedited appeal by calling the number below. We will respond within 72 hours.\n\nHOW TO APPEAL\nMail your appeal to Hudson Valley Health Plan, Appeals Department, P.O. Box 9127, Albany, NY 12212. Include the member ID, the date of this notice, and the reason you believe the service is medically necessary. You may include a letter from your doctor and treatment records from the last six months.\n\nSincerely,\nAppeals Department\nHudson Valley Health Plan"
+        },
+        {
+          "n": 2,
+          "text": "APPEAL INSTRUCTIONS - PAGE 2\n\nWhat to include in your appeal:\n- A signed letter explaining why the service is medically necessary.\n- A letter from the ordering provider describing your symptoms and the conservative treatments you have tried.\n- Clinical records that show at least six weeks of treatment, such as physical therapy notes, medication records, or office visit notes.\n- The name and phone number of the provider who ordered the service.\n\nWhere to send your appeal:\nHudson Valley Health Plan\nAppeals Department\nP.O. Box 9127\nAlbany, NY 12212\nPhone: 1-800-555-0142 (TTY 711)\nFax: 1-518-555-0188\nHours: Monday to Friday, 8:00 a.m. to 6:00 p.m. Eastern.\n\nWhat happens next:\nWe will send you a written decision within 30 days of receiving your appeal. If we do not decide within 30 days, you can ask for an external review. If your appeal is urgent, ask your doctor to mark it as expedited.\n\nKeep a copy of everything you send and the date you sent it."
+        }
+      ]
+    },
+    {
+      "id": "snap-recertification",
+      "title": "SNAP Recertification Notice",
+      "doc_type": "benefits recertification",
+      "agency": "New York State Office of Temporary and Disability Assistance (sample notice)",
+      "doc_date": "2026-12-15",
+      "recipient_lines": [
+        "Household of Daniel Okafor",
+        "Case Number: SNAP-4471-882",
+        "Recertification ID: R-2290-771"
+      ],
+      "subject": "SNAP recertification and interview notice",
+      "pages": [
+        {
+          "n": 1,
+          "text": "Dear Mr. Okafor,\n\nYour household must complete a recertification for the Supplemental Nutrition Assistance Program (SNAP) to continue receiving benefits. Our records show that your current certification period ends on January 31, 2027.\n\nRECERTIFICATION INTERVIEW\nA telephone interview is scheduled for January 8, 2027 at 10:30 a.m. We will call the number on file. If we cannot reach you, call the SNAP office by January 12, 2027 to reschedule.\n\nDEADLINE\nYour completed recertification form and all required documents must be submitted by January 15, 2027. If you miss this deadline, your benefits will stop on February 1, 2027.\n\nWHAT TO SUBMIT\n- The enclosed recertification form, signed and dated.\n- Proof of income for the last 30 days, such as pay stubs for the last four weeks or a letter from your employer.\n- Proof of rent, such as a lease, rent receipt, or landlord letter.\n- A current utility bill or utility allowance statement.\n- Proof of identity for the head of household.\n\nIF YOU MISS THE DEADLINE\nYou may need to reapply, and benefits are not guaranteed. If you have a good reason for missing the deadline, tell the office as soon as possible.\n\nSincerely,\nSNAP Recertification Unit"
+        },
+        {
+          "n": 2,
+          "text": "RECERTIFICATION CHECKLIST - PAGE 2\n\nUse this checklist before you call or mail:\n[ ] Recertification form signed and dated\n[ ] Pay stubs for the last four weeks\n[ ] Proof of rent (lease, receipt, or landlord letter)\n[ ] Utility bill or allowance statement\n[ ] Photo ID for the head of household\n[ ] Change report, if anyone moved in or out\n\nOptions for submitting documents:\n- Online: mybenefits.ny.gov (upload each document as a PDF or photo)\n- Phone: 1-888-555-0177 (Monday to Friday, 8:00 a.m. to 5:00 p.m.)\n- Mail: SNAP Recertification Unit, 224 Church Street, New York, NY 10013\n- In person: any SNAP center\n\nWhat happens after you submit:\nWe will review your documents and send a notice with your new benefit amount. If you are missing a document, you will get a request for information with a new due date. Check your mail and your online account every week until the recertification is complete."
+        }
+      ]
+    },
+    {
+      "id": "immigration-rfe",
+      "title": "Request for Evidence",
+      "doc_type": "immigration request",
+      "agency": "Department of Citizenship Services (sample agency)",
+      "doc_date": "2026-12-01",
+      "recipient_lines": [
+        "Ana and Miguel Santos",
+        "Receipt Number: DCS-2026-IM-4471",
+        "Case Type: Family Petition (sample)"
+      ],
+      "subject": "Request for additional evidence - family petition",
+      "pages": [
+        {
+          "n": 1,
+          "text": "Dear Mr. and Mrs. Santos,\n\nWe received your family petition on June 18, 2026. This request for evidence asks for additional documents before we can decide your case. This is not a denial.\n\nWHAT WE NEED\nTo establish a qualifying family relationship, please provide evidence that you have lived together as a married couple since your marriage on March 12, 2026. We need at least three of the following:\n- A joint lease, mortgage statement, or property deed.\n- Joint bank or credit card statements showing shared expenses.\n- Insurance documents listing both spouses.\n- Photographs from family events that include both spouses and other family members.\n- Affidavits from two people who know you and can describe your relationship, signed and dated.\n\nDEADLINE\nYour response must be received by February 26, 2027. If we do not receive your response by that date, we may decide your case using the evidence we already have.\n\nHOW TO RESPOND\nSend one complete response package with the cover sheet included in this notice. Write your receipt number on the top of every page. Keep the original documents; send copies unless the notice specifically asks for an original.\n\nSincerely,\nOfficer J. Whitfield\nReview Unit, Department of Citizenship Services"
+        },
+        {
+          "n": 2,
+          "text": "RESPONSE CHECKLIST - PAGE 2\n\nBefore you send:\n[ ] Cover sheet from this notice, signed and dated\n[ ] Receipt number DCS-2026-IM-4471 written on every page\n[ ] At least three types of evidence from the list on page 1\n[ ] Affidavits signed and dated by two people who know your household\n[ ] A short cover letter listing every document you are sending\n[ ] Copy of your current address, if it changed since the petition\n\nWhere to send:\nDepartment of Citizenship Services\nEvidence Response Center\nP.O. Box 4471\nAlbany, NY 12212\n\nKeep a copy of the complete package and the mailing receipt. Do not send original documents unless you are told to. If you need help understanding this notice, you may contact a legal services organization or an accredited representative. This notice is not legal advice."
+        }
+      ]
+    }
+  ]
+}

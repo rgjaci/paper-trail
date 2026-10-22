@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' blob: data:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <title>Paper Trail — a quiet desk for confusing mail</title>
+  <meta name="description" content="Paper Trail explains confusing letters, finds real deadlines, and cites the page it read. Local-first, no telemetry, no account.">
+  <meta name="theme-color" content="#f7f3ea">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/static/manifest.webmanifest">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <noscript>
+    <div class="noscript">Paper Trail needs JavaScript to read and analyze documents. The app makes no external requests; enable JavaScript for this page.</div>
+  </noscript>
+  <a class="skip-link" href="#main">Skip to your documents</a>
+
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+            <path d="M7 3.25h6.75L18.5 8v12.75H7z" fill="#f7f3ea"/>
+            <path d="M13.75 3.25V8h4.75" fill="#d5e2d8"/>
+            <path d="M9.5 11.25h5.5M9.5 14h5.5M9.5 16.75h3.25" stroke="#1f5c43" stroke-width="1.25" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1>Paper Trail</h1>
+          <p class="tagline">A quiet desk for confusing mail.</p>
+        </div>
+      </div>
+
+      <div class="top-right">
+        <div class="pills" aria-label="Service status">
+          <span class="pill pill-loading" id="statusPill" role="status">
+            <span class="pill-dot" aria-hidden="true"></span>Connecting
+          </span>
+          <span class="pill" id="callsPill" title="Outbound model requests made by this app">0 external calls</span>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-ghost" id="uploadBtn" type="button">Upload</button>
+          <button class="btn btn-ghost btn-danger" id="deleteAllBtn" type="button" disabled>Delete all</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="banners">
+    <div class="banner banner-error" id="offlineBanner" role="status" aria-live="polite" hidden>
+      <span class="banner-text"><strong>Can’t reach the local server.</strong> Start <code>python server.py</code>, then try again. Your local files are still on this machine.</span>
+      <button class="btn btn-small" id="retryBoot" type="button">Retry</button>
+    </div>
+    <div class="banner banner-amber" id="demoBanner" hidden>
+      <span class="banner-text"><strong>Demo mode</strong> — bundled sample cases with recorded answers. Set <code>GEMINI_API_KEY</code> for live analysis.</span>
+      <span class="banner-extra">Uploads are off. No external calls are made.</span>
+    </div>
+  </div>
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="Document library">
+      <div class="side-block">
+        <div class="side-head">
+          <h2>Documents</h2>
+          <span class="count" id="docCount">0</span>
+        </div>
+        <ul class="doc-list" id="docList" aria-label="Your documents"></ul>
+        <p class="side-empty" id="docListEmpty">No documents yet. Load a sample case below.</p>
+      </div>
+
+      <div class="side-block samples">
+        <div class="side-head">
+          <h3>Sample cases</h3>
+          <span class="badge badge-sample">SAMPLE</span>
+        </div>
+        <p class="side-note">Synthetic letters to explore. No real personal data.</p>
+        <div class="sample-buttons">
+          <button class="sample-btn" type="button" data-sample="benefits-denial">
+            <span class="sample-copy">
+              <span class="sample-title">Insurance denial</span>
+              <span class="sample-sub">A denied claim, and the appeal window</span>
+            </span>
+            <span class="sample-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="sample-btn" type="button" data-sample="snap-recertification">
+            <span class="sample-copy">
+              <span class="sample-title">SNAP recertification</span>
+              <span class="sample-sub">A benefits renewal with a hard date</span>
+            </span>
+            <span class="sample-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="sample-btn" type="button" data-sample="immigration-rfe">
+            <span class="sample-copy">
+              <span class="sample-title">Immigration RFE</span>
+              <span class="sample-sub">A request for evidence, with a deadline</span>
+            </span>
+            <span class="sample-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div class="inline-error" id="sampleError" role="alert" aria-live="polite" hidden></div>
+      </div>
+
+      <p class="side-foot">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Data stays in <code>./data</code>
+      </p>
+    </aside>
+
+    <main class="main" id="main" tabindex="-1">
+      <section class="empty-view" id="emptyView" aria-labelledby="welcomeTitle">
+        <div class="welcome">
+          <div class="welcome-copy">
+            <p class="eyebrow">Your private document desk</p>
+            <h2 class="display" id="welcomeTitle">Open the letter you’ve been avoiding.</h2>
+            <p class="lead">Paper Trail explains what a notice says in plain language, finds the dates that matter, and answers questions with the exact page it read. Nothing is uploaded to an account.</p>
+            <ul class="promise-list">
+              <li><strong>It stays on this machine.</strong> Your documents live in a local folder, not a cloud.</li>
+              <li><strong>No telemetry.</strong> No analytics, no third-party scripts, no fetched fonts.</li>
+              <li><strong>Honest about analysis.</strong> Demo mode makes zero network calls. With a hosted key, the pages of a document you add or analyze can be sent to Gemma 4.</li>
+            </ul>
+          </div>
+
+          <div class="welcome-samples">
+            <div class="welcome-samples-head">
+              <p class="field-label">Try a sample case</p>
+              <span class="badge badge-sample">SAMPLE</span>
+            </div>
+            <p class="welcome-samples-note">Synthetic letters, made for this demo.</p>
+            <div class="case-grid">
+              <button class="case-card" type="button" data-sample="benefits-denial">
+                <span class="case-copy">
+                  <span class="case-title">Insurance denial</span>
+                  <span class="case-blurb">Denied coverage notice with an appeal date</span>
+                </span>
+                <span class="case-arrow" aria-hidden="true">→</span>
+              </button>
+              <button class="case-card" type="button" data-sample="snap-recertification">
+                <span class="case-copy">
+                  <span class="case-title">SNAP recertification</span>
+                  <span class="case-blurb">Benefits renewal, and what happens if you miss it</span>
+                </span>
+                <span class="case-arrow" aria-hidden="true">→</span>
+              </button>
+              <button class="case-card" type="button" data-sample="immigration-rfe">
+                <span class="case-copy">
+                  <span class="case-title">Immigration RFE</span>
+                  <span class="case-blurb">A request for evidence from the agency</span>
+                </span>
+                <span class="case-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropzone" id="dropzone">
+          <span class="drop-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          </span>
+          <p class="drop-title">Drop a letter here, or choose files</p>
+          <p class="drop-note">PNG · JPG · WebP · PDF · TXT · Markdown — up to 20 files. Large images are resized in your browser.</p>
+          <button class="btn btn-primary" id="chooseFilesBtn" type="button">Choose files</button>
+          <p class="drop-demo" id="dropDemoNote" hidden>Uploads are off in demo mode. Load a sample case above, or set <code>GEMINI_API_KEY</code> for live analysis.</p>
+        </div>
+
+        <p class="privacy-promise">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Files stay in this app’s local store. Demo mode sends nothing anywhere; with a hosted key, adding an image may trigger a transcription call and Analyze sends that document’s pages.
+        </p>
+      </section>
+
+      <section class="doc-view" id="docView" aria-label="Open document" hidden>
+        <div class="doc-head">
+          <div class="doc-head-main">
+            <div class="doc-badges" id="docBadges"></div>
+            <h2 class="doc-title" id="docTitle" tabindex="-1"></h2>
+            <p class="doc-meta" id="docMeta"></p>
+            <div class="sample-notice" id="sampleNotice" hidden>
+              <span class="badge badge-sample">SAMPLE</span>
+              <span>Synthetic document made for this demo. Nothing here is real.</span>
+            </div>
+            <div class="doc-warnings" id="docWarnings" role="status" aria-live="polite" hidden></div>
+          </div>
+        </div>
+
+        <div class="doc-grid">
+          <section class="panel viewer" aria-label="Document pages">
+            <div class="viewer-head">
+              <h3 class="panel-title">Page <span id="pageLabel" aria-live="polite">1 of 1</span></h3>
+              <div class="pager">
+                <button class="icon-btn" id="prevPage" type="button" aria-label="Previous page" disabled>←</button>
+                <button class="icon-btn" id="nextPage" type="button" aria-label="Next page" disabled>→</button>
+              </div>
+            </div>
+
+            <div class="page-frame" id="pageFrame">
+              <div class="page-loading" id="pageLoading" hidden>Turning the page…</div>
+              <img id="pageImage" alt="" hidden>
+              <pre class="page-text" id="pageText" dir="auto" tabindex="0" aria-label="Page text" hidden></pre>
+              <div class="page-empty" id="pageEmpty" hidden></div>
+            </div>
+
+            <details class="extracted" id="extractedWrap" hidden>
+              <summary>Extracted text for this page</summary>
+              <pre class="page-text" id="extractedText" dir="auto" tabindex="0" aria-label="Extracted page text"></pre>
+            </details>
+
+            <div class="cite-bar" id="citeBar" role="status" aria-live="polite" hidden>
+              <span class="cite-label">Cited from page <span id="citePage"></span></span>
+              <blockquote id="citeQuote" dir="auto" tabindex="0" aria-label="Cited text"></blockquote>
+              <button class="icon-btn cite-close" id="citeClose" type="button" aria-label="Dismiss cited text">×</button>
+            </div>
+
+            <p class="viewer-hint">Click a <span class="cite-example">p.1</span> citation to see where it came from. Use ← → to turn pages.</p>
+          </section>
+
+          <section class="panel analysis" aria-label="Analysis">
+            <div class="analysis-head">
+              <h3 class="panel-title">Analysis</h3>
+              <label class="lang-field" for="langSelect">
+                <span>Language</span>
+                <select id="langSelect">
+                  <option value="en" selected>English</option>
+                  <option value="es">Español</option>
+                  <option value="el">Ελληνικά</option>
+                  <option value="bn">বাংলা</option>
+                  <option value="zh">中文</option>
+                  <option value="ar">العربية</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="modes" role="group" aria-label="Analysis mode">
+              <button class="mode-tab active" type="button" data-mode="explain" aria-pressed="true" aria-keyshortcuts="1">
+                <span class="mode-num" aria-hidden="true">1</span>Explain
+              </button>
+              <button class="mode-tab" type="button" data-mode="deadline" aria-pressed="false" aria-keyshortcuts="2">
+                <span class="mode-num" aria-hidden="true">2</span>Deadline
+              </button>
+              <button class="mode-tab" type="button" data-mode="ask" aria-pressed="false" aria-keyshortcuts="3">
+                <span class="mode-num" aria-hidden="true">3</span>Ask
+              </button>
+              <button class="mode-tab" type="button" data-mode="respond" aria-pressed="false" aria-keyshortcuts="4">
+                <span class="mode-num" aria-hidden="true">4</span>Respond
+              </button>
+            </div>
+
+            <p class="demo-lang-hint" id="demoLangHint" hidden>Recorded demo answers are English-only.</p>
+
+            <div class="field" id="askField" hidden>
+              <label for="question">Your question</label>
+              <input id="question" type="text" maxlength="1000" value="What do I need to do?" autocomplete="off" dir="auto" spellcheck="true">
+              <p class="field-error" id="askError" role="status" aria-live="polite" hidden></p>
+            </div>
+
+            <div class="field" id="respondField" hidden>
+              <label for="context">Context for the reply <span class="opt">optional</span></label>
+              <textarea id="context" maxlength="2000" rows="3" placeholder="Anything the letter should mention — dates, a name, what you can afford…" dir="auto"></textarea>
+            </div>
+
+            <div class="analyze-row">
+              <button class="btn btn-primary analyze-btn" id="analyzeBtn" type="button" aria-keyshortcuts="Control+Enter Meta+Enter">Analyze</button>
+              <span class="kbd-hint" aria-hidden="true"><kbd>Ctrl</kbd><span>/</span><kbd>⌘</kbd><span>+</span><kbd>Enter</kbd></span>
+            </div>
+
+            <div class="result-meta" id="resultMeta" hidden></div>
+            <div class="analysis-error" id="analysisError" role="alert" aria-live="polite" hidden></div>
+
+            <div class="result-body" id="resultBody" aria-live="polite" aria-busy="false">
+              <p class="result-placeholder">Choose a mode and press <strong>Analyze</strong>. Every answer points to the page it came from.</p>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="privacy-strip" aria-label="Privacy and local storage">
+    <div class="privacy-inner">
+      <span class="privacy-item">Local store: <code id="storePath" title="Local document folder">./data</code></span>
+      <span class="privacy-sep" aria-hidden="true">·</span>
+      <span class="privacy-item"><span class="dot" aria-hidden="true"></span>No telemetry</span>
+      <span class="privacy-sep" aria-hidden="true">·</span>
+      <span class="privacy-item" id="privacyCalls">External calls: 0</span>
+      <span class="privacy-sep" aria-hidden="true">·</span>
+      <button class="link-btn" id="privacyDelete" type="button">Delete everything</button>
+      <span class="privacy-sep" aria-hidden="true">·</span>
+      <button class="link-btn" id="howBtn" type="button">How it works</button>
+    </div>
+  </footer>
+
+  <div class="drop-overlay" id="dropOverlay" hidden aria-hidden="true">
+    <div class="drop-overlay-card">
+      <p>Drop to add to your desk</p>
+      <span>PNG · JPG · WebP · PDF · TXT · Markdown</span>
+    </div>
+  </div>
+
+  <input type="file" id="fileInput" accept=".png,.jpg,.jpeg,.webp,.pdf,.txt,.md" multiple hidden>
+
+  <aside class="upload-panel" id="uploadPanel" aria-label="Upload progress" hidden>
+    <div class="upload-head">
+      <h2 id="uploadTitle">Adding documents</h2>
+      <button class="icon-btn" id="uploadClose" type="button" aria-label="Dismiss upload status">×</button>
+    </div>
+    <p class="upload-summary" id="uploadSummary" aria-live="polite"></p>
+    <ul class="upload-list" id="uploadList"></ul>
+    <button class="btn btn-small" id="uploadRetry" type="button" hidden>Retry failed</button>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span id="toastText"></span>
+    <button class="icon-btn" id="toastClose" type="button" aria-label="Dismiss message">×</button>
+  </div>
+
+  <div class="confirm-bar" id="confirmBar" role="alertdialog" aria-labelledby="confirmText" hidden>
+    <span id="confirmText"></span>
+    <div class="confirm-actions">
+      <button class="btn btn-small btn-danger-solid" id="confirmYes" type="button">Delete</button>
+      <button class="btn btn-small btn-ghost" id="confirmNo" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <dialog id="howDialog" aria-labelledby="howTitle">
+    <div class="dialog-inner">
+      <div class="dialog-head">
+        <h2 id="howTitle">How Paper Trail works</h2>
+        <form method="dialog">
+          <button class="icon-btn dialog-close" type="submit" aria-label="Close dialog">×</button>
+        </form>
+      </div>
+      <div class="dialog-body">
+        <section>
+          <h3>Everything starts on this desk</h3>
+          <p>Documents you add are stored in a local folder on this machine — <code>./data</code> unless the server was started with another path. Deleting a document removes its stored pages and files. There is no account and no permanent cloud copy.</p>
+        </section>
+        <section>
+          <h3>Hosted today, local tomorrow</h3>
+          <p>When <code>GEMINI_API_KEY</code> is set, adding page images can trigger a one-time transcription call (up to eight pages by default), and Analyze sends that document’s pages to Gemma 4 through the hosted Gemini API. Without a key it runs in demo mode with recorded sample answers and makes no external requests. The same adapter can point at a local OpenAI-compatible model later — the interface here does not change.</p>
+        </section>
+        <section>
+          <h3>The model reads. The code checks.</h3>
+          <p>Every extracted fact carries a page and a quote. The server checks each quote against the stored page text before you see it: <strong>✓</strong> means it matched, <strong>!</strong> means it could not be verified and is shown anyway. Citations are never silently dropped.</p>
+        </section>
+        <section>
+          <h3>What leaves this machine</h3>
+          <p>The pages of documents you add or analyze, and only when hosted analysis is on. The counter in the header records every outbound model request, including retries. Demo mode sends nothing. Paper Trail has no telemetry, uses no CDN, and never returns an API key to the browser.</p>
+        </section>
+        <p class="disclaimer">Paper Trail helps you read mail. It is not legal, medical, or financial advice; confirm names, addresses, and deadlines on the original notice.</p>
+      </div>
+      <div class="dialog-foot">
+        <form method="dialog">
+          <button class="btn btn-primary" type="submit">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

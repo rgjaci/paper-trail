@@ -1,0 +1,20 @@
+{
+  "name": "Paper Trail",
+  "short_name": "Paper Trail",
+  "description": "A quiet, local-first desk for confusing mail: explain notices, find deadlines, ask questions with page citations, and draft replies.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f3ea",
+  "theme_color": "#f7f3ea",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/static/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

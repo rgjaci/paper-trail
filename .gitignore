@@ -1,0 +1,18 @@
+# local document store (never commit)
+data/
+*.corrupt-*.json
+
+# environment and secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
